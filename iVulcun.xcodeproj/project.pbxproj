@@ -10,11 +10,11 @@
 		4DF292861BAA176B009D2CA4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF292851BAA176B009D2CA4 /* main.m */; };
 		4DF292891BAA176B009D2CA4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF292881BAA176B009D2CA4 /* AppDelegate.m */; };
 		4DF2928C1BAA176B009D2CA4 /* iVulcun.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2928A1BAA176B009D2CA4 /* iVulcun.xcdatamodeld */; };
-		4DF2928F1BAA176B009D2CA4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2928E1BAA176B009D2CA4 /* ViewController.m */; };
 		4DF292921BAA176B009D2CA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DF292901BAA176B009D2CA4 /* Main.storyboard */; };
 		4DF292941BAA176B009D2CA4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DF292931BAA176B009D2CA4 /* Images.xcassets */; };
 		4DF292971BAA176B009D2CA4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF292951BAA176B009D2CA4 /* LaunchScreen.xib */; };
 		4DF292A31BAA176B009D2CA4 /* iVulcunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF292A21BAA176B009D2CA4 /* iVulcunTests.m */; };
+		4DF292B11BAA1E74009D2CA4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF292B01BAA1E74009D2CA4 /* HomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +34,14 @@
 		4DF292871BAA176B009D2CA4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4DF292881BAA176B009D2CA4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4DF2928B1BAA176B009D2CA4 /* iVulcun.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iVulcun.xcdatamodel; sourceTree = "<group>"; };
-		4DF2928D1BAA176B009D2CA4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4DF2928E1BAA176B009D2CA4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4DF292911BAA176B009D2CA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4DF292931BAA176B009D2CA4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4DF292961BAA176B009D2CA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4DF2929C1BAA176B009D2CA4 /* iVulcunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iVulcunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DF292A11BAA176B009D2CA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DF292A21BAA176B009D2CA4 /* iVulcunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iVulcunTests.m; sourceTree = "<group>"; };
+		4DF292AF1BAA1E74009D2CA4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		4DF292B01BAA1E74009D2CA4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +83,11 @@
 		4DF292821BAA176B009D2CA4 /* iVulcun */ = {
 			isa = PBXGroup;
 			children = (
+				4DF292AE1BAA1845009D2CA4 /* Controllers */,
+				4DF292AD1BAA183F009D2CA4 /* Views */,
+				4DF292AC1BAA1836009D2CA4 /* Models */,
 				4DF292871BAA176B009D2CA4 /* AppDelegate.h */,
 				4DF292881BAA176B009D2CA4 /* AppDelegate.m */,
-				4DF2928D1BAA176B009D2CA4 /* ViewController.h */,
-				4DF2928E1BAA176B009D2CA4 /* ViewController.m */,
 				4DF292901BAA176B009D2CA4 /* Main.storyboard */,
 				4DF292931BAA176B009D2CA4 /* Images.xcassets */,
 				4DF292951BAA176B009D2CA4 /* LaunchScreen.xib */,
@@ -120,6 +121,29 @@
 				4DF292A11BAA176B009D2CA4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DF292AC1BAA1836009D2CA4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4DF292AD1BAA183F009D2CA4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4DF292AE1BAA1845009D2CA4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4DF292AF1BAA1E74009D2CA4 /* HomeViewController.h */,
+				4DF292B01BAA1E74009D2CA4 /* HomeViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,8 +248,8 @@
 			files = (
 				4DF2928C1BAA176B009D2CA4 /* iVulcun.xcdatamodeld in Sources */,
 				4DF292891BAA176B009D2CA4 /* AppDelegate.m in Sources */,
-				4DF2928F1BAA176B009D2CA4 /* ViewController.m in Sources */,
 				4DF292861BAA176B009D2CA4 /* main.m in Sources */,
+				4DF292B11BAA1E74009D2CA4 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
