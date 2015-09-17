@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DEC02071BAA84360086710C /* GamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEC02061BAA84360086710C /* GamesTableViewController.m */; };
+		4DEC020A1BAA85430086710C /* GamesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEC02091BAA85430086710C /* GamesTableViewCell.m */; };
+		4DEC020D1BAAA20F0086710C /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEC020C1BAAA20F0086710C /* Game.m */; };
+		4DEC02101BAB783F0086710C /* GameDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEC020F1BAB783F0086710C /* GameDetailViewController.m */; };
 		4DF292861BAA176B009D2CA4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF292851BAA176B009D2CA4 /* main.m */; };
 		4DF292891BAA176B009D2CA4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF292881BAA176B009D2CA4 /* AppDelegate.m */; };
 		4DF2928C1BAA176B009D2CA4 /* iVulcun.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2928A1BAA176B009D2CA4 /* iVulcun.xcdatamodeld */; };
@@ -28,6 +32,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4DEC02051BAA84360086710C /* GamesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamesTableViewController.h; sourceTree = "<group>"; };
+		4DEC02061BAA84360086710C /* GamesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamesTableViewController.m; sourceTree = "<group>"; };
+		4DEC02081BAA85430086710C /* GamesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamesTableViewCell.h; sourceTree = "<group>"; };
+		4DEC02091BAA85430086710C /* GamesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamesTableViewCell.m; sourceTree = "<group>"; };
+		4DEC020B1BAAA20F0086710C /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		4DEC020C1BAAA20F0086710C /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		4DEC020E1BAB783F0086710C /* GameDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDetailViewController.h; sourceTree = "<group>"; };
+		4DEC020F1BAB783F0086710C /* GameDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDetailViewController.m; sourceTree = "<group>"; };
 		4DF292801BAA176B009D2CA4 /* iVulcun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iVulcun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DF292841BAA176B009D2CA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DF292851BAA176B009D2CA4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -126,6 +138,8 @@
 		4DF292AC1BAA1836009D2CA4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4DEC020B1BAAA20F0086710C /* Game.h */,
+				4DEC020C1BAAA20F0086710C /* Game.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -133,6 +147,8 @@
 		4DF292AD1BAA183F009D2CA4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4DEC02081BAA85430086710C /* GamesTableViewCell.h */,
+				4DEC02091BAA85430086710C /* GamesTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -142,6 +158,10 @@
 			children = (
 				4DF292AF1BAA1E74009D2CA4 /* HomeViewController.h */,
 				4DF292B01BAA1E74009D2CA4 /* HomeViewController.m */,
+				4DEC02051BAA84360086710C /* GamesTableViewController.h */,
+				4DEC02061BAA84360086710C /* GamesTableViewController.m */,
+				4DEC020E1BAB783F0086710C /* GameDetailViewController.h */,
+				4DEC020F1BAB783F0086710C /* GameDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -247,8 +267,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DF2928C1BAA176B009D2CA4 /* iVulcun.xcdatamodeld in Sources */,
+				4DEC02101BAB783F0086710C /* GameDetailViewController.m in Sources */,
+				4DEC02071BAA84360086710C /* GamesTableViewController.m in Sources */,
 				4DF292891BAA176B009D2CA4 /* AppDelegate.m in Sources */,
+				4DEC020A1BAA85430086710C /* GamesTableViewCell.m in Sources */,
 				4DF292861BAA176B009D2CA4 /* main.m in Sources */,
+				4DEC020D1BAAA20F0086710C /* Game.m in Sources */,
 				4DF292B11BAA1E74009D2CA4 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,7 +351,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -364,7 +388,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -375,6 +399,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = iVulcun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -385,6 +413,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = iVulcun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -444,6 +476,7 @@
 				4DF292A81BAA176B009D2CA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DF292A91BAA176B009D2CA4 /* Build configuration list for PBXNativeTarget "iVulcunTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +485,7 @@
 				4DF292AB1BAA176B009D2CA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
