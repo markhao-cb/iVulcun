@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Game" syncable="YES">
-        <attribute name="appid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    <entity name="GameCategory" representedClassName="GameCategory" syncable="YES">
+        <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SavedGame" inverseName="gameCategories" inverseEntity="SavedGame" syncable="YES"/>
     </entity>
-    <entity name="GameData" syncable="YES">
-        <attribute name="appid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="game_description" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="GameGenre" representedClassName="GameGenre" syncable="YES">
+        <attribute name="genreName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SavedGame" inverseName="gameGenres" inverseEntity="SavedGame" syncable="YES"/>
     </entity>
-    <entity name="SavedGame" syncable="YES">
+    <entity name="GameScreenshot" representedClassName="GameScreenshot" syncable="YES">
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SavedGame" inverseName="gameScreenshot" inverseEntity="SavedGame" syncable="YES"/>
+    </entity>
+    <entity name="SavedGame" representedClassName="SavedGame" syncable="YES">
         <attribute name="appId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="backgroundUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gameDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="gameCategories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameCategory" inverseName="game" inverseEntity="GameCategory" syncable="YES"/>
+        <relationship name="gameGenres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameGenre" inverseName="game" inverseEntity="GameGenre" syncable="YES"/>
+        <relationship name="gameScreenshot" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameScreenshot" inverseName="game" inverseEntity="GameScreenshot" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SavedGame" positionX="-54" positionY="-9" width="128" height="60"/>
-        <element name="GameData" positionX="-36" positionY="27" width="128" height="90"/>
-        <element name="Game" positionX="-18" positionY="36" width="128" height="60"/>
+        <element name="GameCategory" positionX="-18" positionY="36" width="128" height="75"/>
+        <element name="GameGenre" positionX="-36" positionY="27" width="128" height="75"/>
+        <element name="SavedGame" positionX="-54" positionY="-9" width="128" height="180"/>
+        <element name="GameScreenshot" positionX="-36" positionY="63" width="128" height="75"/>
     </elements>
 </model>

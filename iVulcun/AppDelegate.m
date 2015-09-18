@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SavedGame.h"
 
 @interface AppDelegate ()
 
@@ -76,6 +77,7 @@
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"iVulcun.sqlite"];
     NSError *error = nil;
+    NSLog(@"sqlite path: %@", storeURL.path);
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         // Report any error we got.

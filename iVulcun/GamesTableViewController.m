@@ -10,6 +10,7 @@
 #import "GamesTableViewController.h"
 #import "GamesTableViewCell.h"
 #import "Game.h"
+#import "GameDetailViewController.h"
 
 @interface GamesTableViewController () {
     NSMutableArray *_apps;
@@ -42,44 +43,7 @@
                 _apps = [NSMutableArray arrayWithArray:gamesListJsonObject[@"applist"][@"apps"]];
                 _games = [[NSMutableArray alloc] init];
                 _appsWithDetails = [[NSMutableArray alloc] init];
-                 for (int i = 0; i < 100; i++) {
-                     NSString *appidAsString = [_apps[i][@"appid"] stringValue];
-                     NSString *getDetailUrlAsString = [NSString stringWithFormat:@"http://store.steampowered.com/api/appdetails/?appids=%@", appidAsString];
-                     NSURL *getDetailUrl = [NSURL URLWithString:getDetailUrlAsString];
-                     NSMutableURLRequest *getDetailUrlRequest = [NSMutableURLRequest requestWithURL:getDetailUrl];
-                     [getDetailUrlRequest setHTTPMethod:@"GET"];
-                     
-                     NSOperationQueue *queue = [NSOperationQueue mainQueue];
-                     NSLog(@"thread: %@", [NSThread currentThread]);
-                     [NSURLConnection sendAsynchronousRequest:getDetailUrlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                         if ([data length] >0 && error == nil){
-                             NSString *gameDetailJsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                             NSError *error = nil;
-                             NSData *gameDetailJsonData = [gameDetailJsonString dataUsingEncoding:NSUTF8StringEncoding];
-                             id gameDetailJsonObject = [NSJSONSerialization JSONObjectWithData:gameDetailJsonData options:NSJSONReadingAllowFragments error:&error];
-                             if (gameDetailJsonObject != nil && error == nil && [gameDetailJsonObject[appidAsString][@"success"] boolValue]) {
-                                 NSLog(@">>>>>>>idx<<<<<<<<: %d",i);
-                                 NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:_apps[i]];
-                                 if ([gameDetailJsonObject[appidAsString][@"data"][@"is_free"] boolValue]) {
-                                     [dict setObject:@"Free" forKey:@"price"];
-                                 } else {
-                                     [dict setObject:@"Paid" forKey:@"price"];
-                                 }
-                                 [dict setObject:gameDetailJsonObject[appidAsString][@"data"][@"detailed_description"] forKey:@"gameDescription"];
-                                 [dict setObject:gameDetailJsonObject[appidAsString][@"data"][@"header_image"] forKey:@"gameImageUrl"];
-                                 [_appsWithDetails addObject: dict];
-//                                 Game *game = [[Game alloc] init];
-//                                 game._gameName = gameDetailJsonObject[appidAsString][@"data"][@"name"];
-//                                 game._gamePrice = gameDetailJsonObject[appidAsString][@"data"][@"is_free"];
-//                                 game._gameDescription = gameDetailJsonObject[appidAsString][@"data"][@"detailed_description"];
-//                                 game._gameImageUrl = gameDetailJsonObject[appidAsString][@"data"][@"header_image"];
-//                                 [_games addObject:game];
-                                 [self.tableView reloadData];
-                             }
-                         }
-                     }];
-
-                 }
+                 [self loadDetails];
                  NSLog(@">>>thread: %@", [NSThread currentThread]);
              }
              else if (error != nil){
@@ -112,7 +76,7 @@
     return _appsWithDetails.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (GamesTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"GamesTableViewCell";
     GamesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
                                                             forIndexPath:indexPath];
@@ -129,6 +93,56 @@
 }
 
 
+-(void)loadDetails {
+    for (int i = 0; i < 20; i++) {
+        NSString *appidAsString = [_apps[i][@"appid"] stringValue];
+        NSString *getDetailUrlAsString = [NSString stringWithFormat:@"http://store.steampowered.com/api/appdetails/?appids=%@", appidAsString];
+        NSURL *getDetailUrl = [NSURL URLWithString:getDetailUrlAsString];
+        NSMutableURLRequest *getDetailUrlRequest = [NSMutableURLRequest requestWithURL:getDetailUrl];
+        [getDetailUrlRequest setHTTPMethod:@"GET"];
+        
+        NSOperationQueue *queue = [NSOperationQueue mainQueue];
+        NSLog(@"thread: %@", [NSThread currentThread]);
+        [NSURLConnection sendAsynchronousRequest:getDetailUrlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            if ([data length] >0 && error == nil){
+                NSString *gameDetailJsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSError *error = nil;
+                NSData *gameDetailJsonData = [gameDetailJsonString dataUsingEncoding:NSUTF8StringEncoding];
+                id gameDetailJsonObject = [NSJSONSerialization JSONObjectWithData:gameDetailJsonData options:NSJSONReadingAllowFragments error:&error];
+                if (gameDetailJsonObject != nil && error == nil && gameDetailJsonObject[appidAsString][@"success"] != nil && [gameDetailJsonObject[appidAsString][@"success"] boolValue]) {
+                    NSLog(@">>>>>>>idx<<<<<<<<: %d",i);
+                    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:_apps[i]];
+                    if (gameDetailJsonObject[appidAsString][@"data"][@"is_free"] != nil && [gameDetailJsonObject[appidAsString][@"data"][@"is_free"] boolValue]) {
+                        [dict setObject:@"Free" forKey:@"price"];
+                    } else {
+                        [dict setObject:@"Paid" forKey:@"price"];
+                    }
+                    if (gameDetailJsonObject[appidAsString][@"data"][@"detailed_description"] != nil) {
+                        [dict setObject:gameDetailJsonObject[appidAsString][@"data"][@"detailed_description"] forKey:@"gameDescription"];
+                    }
+                    if (gameDetailJsonObject[appidAsString][@"data"][@"header_image"] != nil) {
+                        [dict setObject:gameDetailJsonObject[appidAsString][@"data"][@"header_image"] forKey:@"gameImageUrl"];
+                    }
+                    if (gameDetailJsonObject[appidAsString][@"data"][@"categories"] != nil) {
+                        [dict setObject:gameDetailJsonObject[appidAsString][@"data"][@"categories"] forKey:@"categories"];
+                    }
+                    if (gameDetailJsonObject[appidAsString][@"data"][@"genres"] != nil) {
+                        [dict setObject:gameDetailJsonObject[appidAsString][@"data"][@"genres"] forKey:@"genres"];
+                    }
+                    if (gameDetailJsonObject[appidAsString][@"data"][@"screenshots"] != nil) {
+                        [dict setObject:gameDetailJsonObject[appidAsString][@"data"][@"screenshots"] forKey:@"screenshots"];
+                    }
+                    if (gameDetailJsonObject[appidAsString][@"data"][@"background"] != nil) {
+                        [dict setObject:gameDetailJsonObject[appidAsString][@"data"][@"background"] forKey:@"backgroundUrl"];
+                    }
+                    [_appsWithDetails addObject: dict];
+                    [self.tableView reloadData];
+                }
+            }
+        }];
+        [_apps removeObject:_apps[i]];
+    }
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -170,6 +184,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    GameDetailViewController *gameDetailVC = segue.destinationViewController;
+    gameDetailVC.detailsDict = _appsWithDetails[indexPath.row];
 }
 
 

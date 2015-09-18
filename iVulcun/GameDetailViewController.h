@@ -10,4 +10,6 @@
 
 @interface GameDetailViewController : UIViewController
 
+@property (strong, nonatomic) NSMutableDictionary *detailsDict;
+
 @end

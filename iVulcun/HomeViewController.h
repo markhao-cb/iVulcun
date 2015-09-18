@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UINavigationController
+@interface HomeViewController : UITableViewController <UINavigationControllerDelegate>
+
 
 @end
