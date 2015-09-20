@@ -10,7 +10,6 @@
 		4D2B40031BAC405B00E7A2FB /* SavedGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2B40021BAC405B00E7A2FB /* SavedGame.m */; };
 		4D2B40061BAC405B00E7A2FB /* GameCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2B40051BAC405B00E7A2FB /* GameCategory.m */; };
 		4D2B40091BAC405B00E7A2FB /* GameGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2B40081BAC405B00E7A2FB /* GameGenre.m */; };
-		4D2B40121BAC89A700E7A2FB /* Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2B40111BAC89A700E7A2FB /* Animator.m */; };
 		4D2B40151BAC8E3700E7A2FB /* GameScreenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2B40141BAC8E3700E7A2FB /* GameScreenshot.m */; };
 		4D5EB83D1BAC31A70061D408 /* SearchGameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D5EB83C1BAC31A70061D408 /* SearchGameTableViewCell.xib */; };
 		4DEA8EB61BABDCA30097DD92 /* GameScreenshotsScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEA8EB51BABDCA30097DD92 /* GameScreenshotsScrollView.m */; };
@@ -47,8 +46,6 @@
 		4D2B40051BAC405B00E7A2FB /* GameCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCategory.m; sourceTree = "<group>"; };
 		4D2B40071BAC405B00E7A2FB /* GameGenre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameGenre.h; sourceTree = "<group>"; };
 		4D2B40081BAC405B00E7A2FB /* GameGenre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameGenre.m; sourceTree = "<group>"; };
-		4D2B40101BAC89A700E7A2FB /* Animator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animator.h; sourceTree = "<group>"; };
-		4D2B40111BAC89A700E7A2FB /* Animator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animator.m; sourceTree = "<group>"; };
 		4D2B40131BAC8E3700E7A2FB /* GameScreenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScreenshot.h; sourceTree = "<group>"; };
 		4D2B40141BAC8E3700E7A2FB /* GameScreenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScreenshot.m; sourceTree = "<group>"; };
 		4D5EB83C1BAC31A70061D408 /* SearchGameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchGameTableViewCell.xib; sourceTree = "<group>"; };
@@ -183,8 +180,6 @@
 				4DEA8EBD1BABF8460097DD92 /* CoreDataModels */,
 				4DEC020B1BAAA20F0086710C /* Game.h */,
 				4DEC020C1BAAA20F0086710C /* Game.m */,
-				4D2B40101BAC89A700E7A2FB /* Animator.h */,
-				4D2B40111BAC89A700E7A2FB /* Animator.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -324,7 +319,6 @@
 				4D2B40151BAC8E3700E7A2FB /* GameScreenshot.m in Sources */,
 				4DEC02071BAA84360086710C /* GamesTableViewController.m in Sources */,
 				4D2B40031BAC405B00E7A2FB /* SavedGame.m in Sources */,
-				4D2B40121BAC89A700E7A2FB /* Animator.m in Sources */,
 				4DF292891BAA176B009D2CA4 /* AppDelegate.m in Sources */,
 				4DEC020A1BAA85430086710C /* GamesTableViewCell.m in Sources */,
 				4DF292861BAA176B009D2CA4 /* main.m in Sources */,

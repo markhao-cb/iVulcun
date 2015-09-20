@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _appsWithDetails = [[NSMutableArray alloc] init];
     //Get Games list through API
     NSString *getListurlAsString = @"http://api.steampowered.com/ISteamApps/GetAppList/v2/";
     NSURL *getListurl = [NSURL URLWithString:getListurlAsString];
@@ -42,7 +43,7 @@
              if (gamesListJsonObject != nil && error == nil) {
                 _apps = [NSMutableArray arrayWithArray:gamesListJsonObject[@"applist"][@"apps"]];
                 _games = [[NSMutableArray alloc] init];
-                _appsWithDetails = [[NSMutableArray alloc] init];
+                
                  [self loadDetails];
                  NSLog(@">>>thread: %@", [NSThread currentThread]);
              }
@@ -73,23 +74,53 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //     Return the number of rows in the section.
-    return _appsWithDetails.count;
+    if (_appsWithDetails.count == 0) {
+        return 0;
+    } else {
+        return _appsWithDetails.count + 1;
+    }
 }
 
 - (GamesTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"GamesTableViewCell";
-    GamesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
-                                                            forIndexPath:indexPath];
+    GamesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[GamesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:CellIdentifier];
+                                         reuseIdentifier:CellIdentifier];
     }
+    if(indexPath.row==_appsWithDetails.count){
+        cell.textLabel.text=@"Load More Games...";
+        cell.textLabel.hidden = NO;
+        cell.lblGameName.hidden = YES;
+        cell.lblGamePrice.hidden = YES;
+        cell.lblGameDescription.hidden = YES;
+        cell.ivGameImage.hidden = YES;
+        return cell;
+    }
+    
+    cell.lblGameName.hidden = NO;
+    cell.lblGamePrice.hidden = NO;
+    cell.lblGameDescription.hidden = NO;
+    cell.ivGameImage.hidden = NO;
+    cell.textLabel.hidden = YES;
+    
+    
     NSLog(@">>>>count of app details<<<<<: %lu", (unsigned long)_appsWithDetails.count);
     cell.lblGameName.text = _appsWithDetails[indexPath.row][@"name"];
     cell.lblGamePrice.text = _appsWithDetails[indexPath.row][@"price"];
     cell.lblGameDescription.text = _appsWithDetails[indexPath.row][@"gameDescription"];
     cell.ivGameImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: _appsWithDetails[indexPath.row][@"gameImageUrl"]]]];
+    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Row:%ld",(long)indexPath.row);
+    NSLog(@"Count:%lu",(unsigned long)_appsWithDetails.count);
+    if(indexPath.row ==_appsWithDetails.count){
+        [self loadDetails];
+    }
 }
 
 
@@ -137,6 +168,7 @@
                     }
                     [_appsWithDetails addObject: dict];
                     [self.tableView reloadData];
+
                 }
             }
         }];
@@ -179,6 +211,16 @@
 
 
 #pragma mark - Navigation
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    if(indexPath.row ==_appsWithDetails.count){
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

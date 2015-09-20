@@ -55,7 +55,7 @@
                     <navigationItem key="navigationItem" id="HZ8-l7-D7u">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Llc-xf-Pdt">
-                            <rect key="frame" x="65" y="8" width="191" height="29"/>
+                            <rect key="frame" x="64.5" y="7.5" width="191" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Sort by date"/>
@@ -203,6 +203,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="zWC-dU-QTZ"/>
+        <segue reference="a42-HW-Gt9"/>
     </inferredMetricsTieBreakers>
 </document>

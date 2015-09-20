@@ -9,7 +9,6 @@
 #import "GameDetailViewController.h"
 #import "GameScreenshotsScrollView.h"
 #import "GameDetailScrollView.h"
-#import "HomeViewController.h"
 #import "SavedGame.h"
 #import "GameCategory.h"
 #import "GameGenre.h"

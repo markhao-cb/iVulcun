@@ -164,8 +164,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     SavedGamesTableViewCell *cell = nil;
-    cell = [tableView dequeueReusableCellWithIdentifier:@"SavedGamesTableViewCell"
-                                           forIndexPath:indexPath];
+    cell = [tableView dequeueReusableCellWithIdentifier:@"SavedGamesTableViewCell"];
     SavedGame *game = [self.frc objectAtIndexPath:indexPath];
     if(tableView == self.tableView) {
         cell.lblName.text = game.name;
@@ -220,6 +219,13 @@
 //    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
 //        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 //    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    GameDetailViewController *gameVC = [[GameDetailViewController alloc] init];
+    //TODO Navigate to Game detail VC
 }
 
 
